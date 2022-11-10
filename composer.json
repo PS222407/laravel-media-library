@@ -1,0 +1,22 @@
+{
+    "name": "jensramakers/laravel-media-library",
+    "description": "laravel async media library using livewire",
+    "autoload": {
+        "psr-4": {
+            "Jensramakers\\LaravelMediaLibrary\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jensramakers\\LaravelMediaLibrary\\LaravelMediaLibraryServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "jensramakers"
+        }
+    ],
+    "require": {}
+}

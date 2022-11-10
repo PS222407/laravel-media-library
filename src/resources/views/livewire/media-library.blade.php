@@ -64,20 +64,23 @@
             </div>
         </div>
 
-        <button type="button" onclick="formImagesExtr('{{ $containerElementId }}'); return false;" class="px-3 py-1 bg-input_color rounded">
-            add to form
-        </button>
+        @if($form)
+            <button type="button" onclick="formImagesExtr('{{ $containerElementId }}'); return false;" class="px-3 py-1 bg-input_color rounded">
+                add to form
+            </button>
+        @endif
     </div>
 
     {{--  tab 2  --}}
     <div class="{{ $currentTab !== 2 ? 'hidden' : '' }} p-5">
+        @error('createCategoryName') <span class="text-red-500">{{ $message }}</span>@enderror
         <form wire:submit.prevent="createCategory" class="flex gap-x-1 mb-4">
             <input type="text" wire:model.defer="createCategoryName" />
             <button class="px-3 py-1 bg-input_color rounded" type="submit">submit</button>
         </form>
+        @error('uploadFiles') <span class="text-red-500">{{ $message }}</span> <br>@enderror
+        @error('uploadFiles.*') <span class="text-red-500">{{ $message }}</span> <br>@enderror
         <form wire:submit.prevent="store" class="flex gap-x-1 mb-4">
-            @error('uploadFiles.*') <span class="text-red-500">{{ $message }}</span> <br>@enderror
-
             <input wire:model="uploadFiles" type="file" multiple id="upload-iteration-{{ $uploadIteration }}" class="block bg-gray-50 rounded-lg border cursor-pointer focus:outline-none">
             <select wire:model.defer="uploadLabel">
                 <option value="FRONT">front</option>

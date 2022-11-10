@@ -87,6 +87,7 @@ class MediaLibrary extends Component
     public function store()
     {
         $this->validate([
+            'uploadFiles' => ['required'],
             'uploadFiles.*' => ['required', 'max:'.(1024 * 10)],
         ]);
 
@@ -133,6 +134,10 @@ class MediaLibrary extends Component
      */
     public function createCategory()
     {
+        $this->validate([
+            'createCategoryName' => 'required',
+        ]);
+
         FileCategory::create([
             'name' => $this->createCategoryName,
         ], $this->parentCategory);

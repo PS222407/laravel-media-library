@@ -24,5 +24,7 @@ class LaravelMediaLibraryServiceProvider extends ServiceProvider
         Blade::component(InputImageContainer::class, 'input-image-container');
 
         Livewire::component('media-library', MediaLibrary::class);
+
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
     }
 }

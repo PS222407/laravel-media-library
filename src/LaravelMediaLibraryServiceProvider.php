@@ -25,6 +25,8 @@ class LaravelMediaLibraryServiceProvider extends ServiceProvider
 
         Livewire::component('media-library', MediaLibrary::class);
 
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->publishes([
+            __DIR__ . '/database/migrations/' => database_path('migrations'),
+        ], 'laravel-media-library');
     }
 }

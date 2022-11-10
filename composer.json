@@ -18,5 +18,8 @@
             "name": "jensramakers"
         }
     ],
-    "require": {}
+    "require": {
+        "kalnoy/nestedset": "^6.0",
+        "livewire/livewire": "^2.10"
+    }
 }

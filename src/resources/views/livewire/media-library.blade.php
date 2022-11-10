@@ -72,7 +72,7 @@
     {{--  tab 2  --}}
     <div class="{{ $currentTab !== 2 ? 'hidden' : '' }} p-5">
         <form wire:submit.prevent="createCategory" class="flex gap-x-1 mb-4">
-            <x-input-text wire:model.defer="createCategoryName" name="category_name" label="New folder" class-parent="mb-0 w-min" :class="'w-min'"/>
+            <input type="text" wire:model.defer="createCategoryName" />
             <button class="px-3 py-1 bg-input_color rounded" type="submit">submit</button>
         </form>
         <form wire:submit.prevent="store" class="flex gap-x-1 mb-4">

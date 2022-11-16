@@ -117,7 +117,7 @@
 
     {{-- edit modal  --}}
     <div style="z-index: 3000;" data-modal-backdrop="edit-file-modal" class="modal-backdrop"></div>
-    <div style="z-index: 4000;" id="edit-file-modal" class="modal bg-white">
+    <div style="z-index: 4000; min-width: 400px" id="edit-file-modal" class="modal bg-white">
         <button data-modal-close type="button" style="position: absolute" class="bg-red-700 text-white px-3 py-2 absolute right-0"><i class="fa-solid fa-close"></i></button>
         <form wire:submit.prevent="update" class="mt-10">
             <div class="flex flex-col px-2 mb-2">
@@ -140,7 +140,7 @@
 
         <div class="m-4">
             @if(str_starts_with($editFile?->mime, 'image'))
-                <img src="{{ $editFile?->getAsset() }}" data-image-type="{{ $editFile->type }}" alt="edit file" class="object-cover h-full w-full">
+                <img src="{{ $editFile?->getAsset() }}" data-image-type="{{ $editFile->type }}" alt="edit file" class="object-cover h-full w-full" style="max-height: 300px">
             @else
                 <i class="fa-solid text-center w-full {{ $editFile?->mime_icon }}" style="align-self: end; font-size: 7rem"></i>
                 <span>{{ substr($editFile?->name, 12) }}</span>

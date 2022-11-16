@@ -3,8 +3,8 @@
 
     {{--  tabbed navigation  --}}
     <div class="flex border-b border-black bg-gray-100">
-        <div wire:click="changeTab(1)" style="margin-bottom: -2px" class="{{ $currentTab !== 1 ? 'bg-gray-200 border-x-0 border-t-0' : 'bg-white border-b-0' }} border border-black cursor-pointer rounded-t px-10 py-2">Galerij</div>
-        <div wire:click="changeTab(2)" style="margin-bottom: -1px" class="{{ $currentTab !== 2 ? 'bg-gray-200 border-x-0 border-t-0' : 'bg-white border-b-0' }} border border-black cursor-pointer rounded-t px-10 py-2">Upload</div>
+        <div wire:click="changeTab(1)" style="margin-bottom: -2px" class="{{ $currentTab !== 1 ? 'bg-gray-200 border-x-0 border-t-0' : 'bg-white border-b-0' }} border border-black cursor-pointer rounded-t-lg px-10 py-2">Galerij</div>
+        <div wire:click="changeTab(2)" style="margin-bottom: -2px" class="{{ $currentTab !== 2 ? 'bg-gray-200 border-x-0 border-t-0' : 'bg-white border-b-0' }} border border-black cursor-pointer rounded-t-lg px-10 py-2">Upload</div>
     </div>
     {{--  breadcrumbs  --}}
     <div class="flex">
@@ -74,18 +74,25 @@
     {{--  tab 2  --}}
     <div class="{{ $currentTab !== 2 ? 'hidden' : '' }} p-5">
         @error('createCategoryName') <span class="text-red-500">{{ $message }}</span>@enderror
-        <form wire:submit.prevent="createCategory" class="flex gap-x-1 mb-4">
-            <input type="text" wire:model.defer="createCategoryName" />
-            <button class="px-3 py-1 bg-input_color rounded" type="submit">submit</button>
+        <form wire:submit.prevent="createCategory" class="mb-4">
+            <label for="upload-iteration-{{ $uploadIteration }}">Create new directory</label>
+            <div class="flex gap-x-1">
+                <input type="text" wire:model.defer="createCategoryName" class="focus:outline-none focus:ring-0 focus:border-input_color" />
+                <button class="px-3 py-1 bg-input_color rounded" type="submit">submit</button>
+            </div>
         </form>
         @error('uploadFiles') <span class="text-red-500">{{ $message }}</span> <br>@enderror
         @error('uploadFiles.*') <span class="text-red-500">{{ $message }}</span> <br>@enderror
         <form wire:submit.prevent="store" class="flex gap-x-1 mb-4">
-            <input wire:model="uploadFiles" type="file" multiple id="upload-iteration-{{ $uploadIteration }}" class="block bg-gray-50 rounded-lg border cursor-pointer focus:outline-none">
-            <select wire:model.defer="uploadLabel">
-                <option value="FRONT">front</option>
-                <option value="BACK">back</option>
-            </select>
+            <input wire:model="uploadFiles" type="file" multiple id="upload-iteration-{{ $uploadIteration }}" class="block bg-gray-50 rounded-lg border cursor-pointer focus:outline-none focus:ring-0 focus:border-input_color">
+            @if(config('medialibrary.label'))
+                <select wire:model.defer="uploadLabel" class="focus:outline-none focus:ring-0 focus:border-input_color">
+                    <option value="" selected="selected">--- select option ---</option>
+                    @foreach(config('medialibrary.label_options') as $value => $label)
+                        <option value="{{ $value }}">{{ $label }}</option>
+                    @endforeach
+                </select>
+            @endif
             <button class="px-3 py-1 bg-input_color rounded" type="submit">submit</button>
         </form>
         <div class="p-1 shadow-inner border overflow-y-auto h-[292.5px]">
@@ -115,14 +122,14 @@
         <form wire:submit.prevent="update" class="mt-10">
             <div class="flex flex-col px-2 mb-2">
                 <label for="imgLabel">Label</label>
-                <select wire:model.defer="imgLabel" id="imgLabel">
+                <select wire:model.defer="imgLabel" id="imgLabel" class="focus:outline-none focus:ring-0 focus:border-input_color">
                     <option value="FRONT">front</option>
                     <option value="BACK">back</option>
                 </select>
             </div>
             <div class="flex flex-col px-2 mb-2">
                 <label for="imgCategory">Category</label>
-                <select wire:model.defer="imgCategory" id="imgCategory">
+                <select wire:model.defer="imgCategory" id="imgCategory" class="focus:outline-none focus:ring-0 focus:border-input_color">
                     {!! $options !!}
                 </select>
             </div>

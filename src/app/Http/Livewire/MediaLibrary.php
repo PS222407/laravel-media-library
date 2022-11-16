@@ -21,7 +21,7 @@ class MediaLibrary extends Component
     public $uploadIteration = 0;
     public $currentTab = 1;
     public $multiple = true;
-    public $uploadLabel = 'FRONT';
+    public $uploadLabel;
     public $galleryId, $options, $imgCategory, $containerElementId, $form, $inputName, $files, $imgLabel, $editFile, $deleteFile, $createCategoryName, $parentCategory, $childrenOfCategory;
     public Collection $previousParentCategory;
 
@@ -100,7 +100,7 @@ class MediaLibrary extends Component
                 'path' => str_replace($filename, '', $path),
                 'mime' => $uploadFile->getMimeType(),
                 'mime_icon' => $this->getIconByMimeTYpe($uploadFile->getMimeType()),
-                'label' => $this->uploadLabel,
+                'label' => $this->uploadLabel ?? null,
                 'file_category_id' => $this->parentCategory->id,
             ]);
         }

@@ -28,5 +28,9 @@ class LaravelMediaLibraryServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/database/migrations/' => database_path('migrations'),
         ], 'laravel-media-library');
+
+        $this->publishes([
+            __DIR__ . '/config/medialibrary.php' => config_path('medialibrary.php'),
+        ], 'laravel-media-library');
     }
 }

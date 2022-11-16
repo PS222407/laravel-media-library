@@ -5,7 +5,7 @@ in model use trait: "Fileable"
 
 Add this piece of HTML to a form, place it oustide the form tags, you can pass the form id
 ```php
-<button data-modal-open="laptop-modal" role="button" class="p-3 bg-blue-500 mb-2">{{ __('admin.open_gallery') }}</button>
+<button data-modal-open="laptop-modal" role="button" class="btn-primary mb-3">{{ __('admin.open_gallery') }}</button>
 <x-input-file-selector :files="$laptop->files" gallery-id="laptop-create-gallery" container-element-id="laptop-form-images" input-name="laptop_images" form="laptop-form" modal-name="laptop-modal" />
 ```
 or when you dont want it inside of a form but to be static on one page you can you can use the livewire tag

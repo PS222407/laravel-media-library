@@ -15,4 +15,12 @@ trait Fileable
     {
         return $this->morphToMany(File::class, 'fileable')->where('mime', 'like','image%')->orderBy('order');
     }
+
+    public static function boot () {
+        parent::boot();
+
+        self::deleting(function ($value) {
+            $value->files()->sync([]);
+        });
+    }
 }

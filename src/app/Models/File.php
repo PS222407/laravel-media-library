@@ -5,6 +5,7 @@ namespace Jensramakers\LaravelMediaLibrary\app\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Jensramakers\LaravelMediaLibrary\Database\Factories\FileFactory;
 
 class File extends Model
 {
@@ -22,5 +23,13 @@ class File extends Model
     public function getAsset()
     {
         return asset(Storage::url($this->path . $this->name));
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     */
+    protected static function newFactory()
+    {
+        return FileFactory::new();
     }
 }

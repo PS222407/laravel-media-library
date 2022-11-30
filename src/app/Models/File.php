@@ -14,6 +14,7 @@ class File extends Model
     protected $fillable = [
         'name',
         'path',
+        'is_external',
         'label',
         'mime',
         'mime_icon',
@@ -22,6 +23,10 @@ class File extends Model
 
     public function getAsset()
     {
+        if ($this->is_external) {
+            return $this->path . $this->name;
+        }
+
         return asset(Storage::url($this->path . $this->name));
     }
 

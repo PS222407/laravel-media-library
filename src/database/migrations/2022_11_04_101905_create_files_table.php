@@ -12,6 +12,7 @@ return new class () extends Migration {
             $table->foreignId('file_category_id')->constrained();
             $table->string('name');
             $table->string('path');
+            $table->boolean('is_external')->default(false);
             $table->string('label')->nullable();
             $table->string('mime');
             $table->string('mime_icon');

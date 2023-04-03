@@ -17,7 +17,7 @@ php artisan vendor:publish --tag=laravel-media-library
 php artisan migrate
 ```
 add stackable-modals.js    
-add imagegallery.js  
+add medialibrary.js  
 add stackable-modals.css 
 THESE FILES ARE LISTED BELOW
 

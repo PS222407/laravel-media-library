@@ -20,6 +20,9 @@ add stackable-modals.js
 add medialibrary.js  
 add stackable-modals.css 
 THESE FILES ARE LISTED BELOW
+These can all be used as defered in the links
+This package uses livewire so add the @livewireScripts and @livewireStyles in the head
+And install Fontawesome for the icons
 
 and dont forget storage:link and chmod -R 777 storage/  
 
